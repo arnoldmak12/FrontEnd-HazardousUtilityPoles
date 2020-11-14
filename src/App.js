@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Select from './Select';
-import './App.css';
+import './styles/App.css';
 import Upload from './Upload';
+import Video from './Video';
 
 // const singlePath = [<Select/>]
 
@@ -35,7 +36,9 @@ function App() {
 
               <br></br>
 
-              {count === 2 ? console.log("sample is "+ sample) + " Sample: " + {sample} : null}
+              {count === 2 ? <Video></Video> : null}
+
+              {/* {count === 2 ? console.log("sample is "+ sample) + " Sample: " + {sample} : null} */}
       </div>
 
       <div className="button-container">
