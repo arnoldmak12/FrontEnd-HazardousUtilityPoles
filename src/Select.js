@@ -15,11 +15,11 @@ const onClick = useCallback((selection) => {
     <div className="Select">
 
       <div className="content-header-container">
-          <p className="content-header">Choose an Option</p>
+          <p className="content-header">How many utility poles would you like to check? Choose an Option</p>
       </div>
 
           <button className="one" onClick={() => onClick("one")}>one</button>
-          <button className="all" onClick={() => onClick("all")}>all</button>
+          <button className="all" onClick={() => onClick("all")}>multiple</button>
     </div>
   );
 }
