@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MultiView from './MultiView';
 import Select from './Select';
 import './styles/App.css';
 import Upload from './Upload';
@@ -9,17 +10,14 @@ import Video from './Video';
 function App() {
   
   const [count, setCount] = useState(0);
-  const [single, setSingle] = useState(true);
+  const [single, setSingle] = useState(false);
   const [file, setFile] = useState(false);
   const [sample, setSample] = useState(false);
-  const MAX = 10;
-
-
+  const MAX = 3;
 
   return (
     <div className="App">
       
-
       <div className="main-header-container">
           <p className="main-header">Title</p>
       </div>
@@ -37,6 +35,8 @@ function App() {
               <br></br>
 
               {count === 2 ? <Video></Video> : null}
+
+              {(count === 3 && !single) ? <MultiView></MultiView> : null}
 
               {/* {count === 2 ? console.log("sample is "+ sample) + " Sample: " + {sample} : null} */}
       </div>
