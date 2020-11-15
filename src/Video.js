@@ -1,16 +1,21 @@
 import React, { useState, useCallback } from 'react';
 import "../node_modules/video-react/dist/video-react.css";
-import { Player } from 'video-react';
-// import './Video.css';
+import YouTube from 'react-youtube';
+import './styles/Video.css';
 
 function Video(props) {
 
   return (
     <div className="Video">
-        <Player
-            playsInline
-            src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
-        />
+
+        <YouTube 
+        videoId={"BuCPArnjP_U"}
+        opts = {
+            {height: '600',
+            width: '940'}
+        }
+        > </YouTube>
+
     </div>
   );
 }
