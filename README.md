@@ -20,8 +20,8 @@ Markers will have one of 4 colors representing the status of each pole:
 * Green: Lean factor < 2.5
 
 ## Additional steps
-We use the AEP API in our website, which uses HTTP requests. In order to enable these requests, you have to take the following steps:
-1. Navigate to Chrome Settings > Site Settings > Additional content settings > Insecure content
+We use the AEP API in our website, which uses HTTP requests. In order to enable these requests in your browser, you have to take the following steps:
+1. Navigate to Browser Settings > Site Settings > Additional content settings > Insecure content
 2. Under the "Allow" section, click "Add"
 3. Enter https://utilitypolesafetyevaluator.herokuapp.com/ in the box and confirm
 
