@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import MultiView from './MultiView';
-import Select from './Select';
+import Welcome from './Welcome';
 import './styles/App.css';
 import Upload from './Upload';
 import Video from './Video';
 
-// const singlePath = [<Select/>]
 
 function App() {
   
   const [count, setCount] = useState(0);
-  const [single, setSingle] = useState(false);
   const [fileJpg, setfileJpg] = useState(false);
   const [fileJson, setfileJson] = useState(false);
   const [sample, setSample] = useState(false);
@@ -27,11 +25,10 @@ function App() {
 
               {"Count: " + count}
               <br></br>
-              {"Single: " + single}
               
-              {(count === 0 ? <Select onClick={(x) => setSingle(x)}></Select> : null) /* This will allow for selection of 1 or multiple utility poles */} 
+              {(count === 0 ? <Welcome></Welcome> : null)} 
 
-              {count === 1 ? <Upload single={single} 
+              {count === 1 ? <Upload 
               onSubmitJpg={(fileJpgs) => setfileJpg(fileJpgs)}  
               onSubmitJson={(fileJson) => setfileJson(fileJson)}
               useSample={() => setSample(!sample)}></Upload> : null}
@@ -40,7 +37,7 @@ function App() {
 
               {count === 2 ? <Video></Video> : null}
 
-              {(count === 3 && !single) ? <MultiView fileJpg={fileJpg} fileJson={fileJson}></MultiView> : null}
+              {count === 3 ? <MultiView fileJpg={fileJpg} fileJson={fileJson}></MultiView> : null}
 
               {/* {count === 2 ? console.log("sample is "+ sample) + " Sample: " + {sample} : null} */}
       </div>
