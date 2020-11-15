@@ -8,13 +8,21 @@ function Video(props) {
   return (
     <div className="Video">
 
-        <YouTube 
-        videoId={"BuCPArnjP_U"}
-        opts = {
-            {height: '600',
-            width: '940'}
-        }
-        > </YouTube>
+        <div className="sub">
+            <h3>AutoPilot Drone Simulation</h3>
+        </div>
+
+        <div className="video-container">
+            <YouTube 
+                videoId={"BuCPArnjP_U"}
+                opts = {
+                    {height: '500',
+                    width: '940'}
+                }
+                > 
+            </YouTube>
+        </div>
+        
 
     </div>
   );
