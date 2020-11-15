@@ -36,7 +36,7 @@ function MultiView(props) {
             console.log(fileJpg);
             
             $.ajax({
-                url: 'http://18.191.45.207:5000/api/models/predict/pole',
+                url: '18.191.45.207:5000/api/models/predict/pole',
                 data: data,
                 processData: false,
                 contentType: false,
