@@ -1,10 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import {useDropzone} from 'react-dropzone'
-// import './Upload.css';
+import './styles/Upload.css';
 
 function Upload(props) {
-
-    const [sample, setSample] = useState(false);
 
     const onDrop = useCallback(acceptedFiles => {
         console.log(acceptedFiles);
@@ -50,30 +48,22 @@ function Upload(props) {
         }, [])
         const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
-    const onClick = useCallback(() => {
-        props.useSample(sample);
-        } 
-    )
-
   return (
-    <div className="Upload">
+      <div className="upload-container">
+            <div className="dropzone-container" {...getRootProps()} >
+                    <input className="input"{...getInputProps()} />
+                    {
+                        isDragActive ?
+                        <p>Drop the files here ...</p> :
+                        <p>Upload All JPGs and thier corressponding JSON</p>
+                    }
+            </div>
 
-        <div {...getRootProps()} style={{background: 'lightyellow'}}>
-            <input {...getInputProps()} />
-            {
-                isDragActive ?
-                <p>Drop the files here ...</p> :
-                <p>Upload All JPGs and thier corressponding JSON</p>
-            }
+            <div className="sample-container">
+                <a href="https://github.com/arnoldmak12/FrontEnd-HazardousUtilityPoles/tree/master/public">Sample Data is Availible Here</a>
+            </div>
+    
         </div>
-
-        <div>
-            <button onClick={function() {setSample(!sample); onClick();}}>
-                {sample ? "Use My Data": "Use Sample Data"}    
-            </button>
-            {"Sample: " + sample}
-        </div>
-    </div>
   );
 }
 

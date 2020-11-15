@@ -11,7 +11,6 @@ function App() {
   const [count, setCount] = useState(0);
   const [fileJpg, setfileJpg] = useState(false);
   const [fileJson, setfileJson] = useState(false);
-  const [sample, setSample] = useState(false);
   const MAX = 3;
 
   return (
@@ -28,10 +27,11 @@ function App() {
               
               {(count === 0 ? <Welcome></Welcome> : null)} 
 
-              {count === 1 ? <Upload 
-              onSubmitJpg={(fileJpgs) => setfileJpg(fileJpgs)}  
-              onSubmitJson={(fileJson) => setfileJson(fileJson)}
-              useSample={() => setSample(!sample)}></Upload> : null}
+              {count === 1 ? 
+              <Upload 
+                onSubmitJpg={(fileJpgs) => setfileJpg(fileJpgs)}  
+                onSubmitJson={(fileJson) => setfileJson(fileJson)}>
+              </Upload> : null}
 
               <br></br>
 
