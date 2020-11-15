@@ -16,6 +16,7 @@ function MultiView(props) {
     let [clicked, setClicked] = useState([]);
     let [markers, setMarkers] = useState([]);
     let longs = [];
+    let placedMarkers = [];
     
 
     useEffect( () => {
@@ -179,9 +180,11 @@ function MultiView(props) {
                 { markers.length !== 0 && markers.map((marker, id) => {
 
                         let idArr = [id]
-
+                        let index = clicked.indexOf(id)
                         console.log("inside index: " +id);
                         console.log("clicked: " +clicked)
+
+                        if(placedMarkers.indexOf(marker) !== 0 && placedMarkers.length > 0){return}
 
                         return(
                             <Marker
@@ -191,7 +194,7 @@ function MultiView(props) {
                                 lean={marker[2]}
                                 image={marker[3]}
                                 show={clicked.indexOf(id) !== -1}
-                                onClick={() => {clicked.indexOf(id) !== -1 ? setClicked(clicked => clicked.splice(clicked.indexOf(id), 1)) : setClicked(clicked => idArr.concat(clicked))}}
+                                onClick={() => { index !== -1 ? setClicked(clicked => clicked.splice(index + 1, 1)) : setClicked(clicked => idArr.concat(clicked))}}
                             />)
                     })
                 }
