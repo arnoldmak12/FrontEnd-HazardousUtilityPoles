@@ -8,7 +8,7 @@ function Welcome(props) {
 
       <div className="content-header-container">
 
-          <p className="content-header">Welcome to the Utility Pole Saftey Evaluater</p>
+          <p className="content-header">Welcome to the Utility Pole Saftey Evaluator</p>
 
       </div>
 

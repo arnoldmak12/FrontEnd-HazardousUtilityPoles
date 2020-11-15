@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MultiView from './MultiView';
 import Welcome from './Welcome';
+import Particles from 'react-particles-js';
 import './styles/App.css';
 import Upload from './Upload';
 import Video from './Video';
@@ -15,7 +16,29 @@ function App() {
 
   return (
     <div className="App">
+    
+      <div className="background">
+        <Particles
+              params={{
+                "particles": {
+                  "number": {
+                    "value": 50,
+                  },
+                  "color": {
+                    "value": "FFFFF0"
+                  },
+                  "line_linked": {
+                    "enable": true,
+                  },
+                  "size": {
+                    "value": 4,
+                  }
+                }
+              }}
+            />
+      </div>
       
+
       <div className="main-header-container">
           <p className="main-header">Utility Pole Safety Evaluator</p>
       </div>

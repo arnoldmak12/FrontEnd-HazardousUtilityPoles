@@ -3,7 +3,7 @@ div.App {
   width: 100%;
   height: 100%;
   /* background: rgba(110, 123, 165, 0.486); */
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(31,31,31,1) 0%, rgba(52,52,52,1) 0%, rgba(217,217,217,1) 0%, rgba(0,0,0,0.0844712885154062) 50%, rgba(197,197,197,0.9976365546218487) 100%);
+  /* background: #222222; */
 }
 div.main-header-container {
   width: 10%;
@@ -43,17 +43,26 @@ div.button-container button {
   font-size: 2em;
   background: none;
   border-radius: .25em;
-  border: 3px solid blue;
+  border: 3px solid rgba(75, 34, 22, 0.733);
   color: white;
-  background: rgba(0, 0, 255, 0.534);
+  background: rgba(75, 34, 22, 0.534);
   text-decoration: none;
 }
 
 div.button-container button:hover {
   cursor: pointer;
-  background: rgba(0, 0, 255, 0.308);
+  background: rgba(75, 34, 22, 0.329);
 }
 
 button.next {
   float: right;
+}
+
+div.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(183deg, rgba(2,0,36,1) 0%, rgba(235, 139, 29, 0.479) 0%, rgba(202, 202, 202, 0.589) 100%);
+
 }
