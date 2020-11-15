@@ -1,13 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './Mapping/Marker';
-import axios from 'axios';
-import InfoWindow from './Mapping/InfoWindow';
-import sampleJpg from './SampleDataSingle/000140-frontleft-e91e9c57-04f3-4849-8bc0-c043107b94d2-31.jpg' ;
-import * as fs from 'fs';
 import FormData from 'form-data'
 import $ from 'jquery'
-import { render } from '@testing-library/react';
 // var fs = require('fs');
 // import './MultiView.css';
 
@@ -15,26 +10,31 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 var data = new FormData();
 // data.append('image', fs.createReadStream('./SampleDataSingle/000140-frontleft-e91e9c57-04f3-4849-8bc0-c043107b94d2-31.jpg'));
+let first = true;
 
 function MultiView(props) {
 
     let [clicked, setClicked] = useState([]);
     let [markers, setMarkers] = useState([]);
     let longs = [];
+    
 
-    useEffect(async () => {
+    useEffect( () => {
 
-
-        console.log("JPG: "+ props.fileJpg[0].name);
+        if(!first) { return }
+        // console.log("JPG: "+ props.fileJpg[0].name);
 
         let data = new FormData();
 
+        let i = 0;
 
         props.fileJpg.map((fileJpg) => {
 
             data = new FormData();
             data.append("image", fileJpg);
 
+            console.log(fileJpg);
+            
             $.ajax({
                 url: 'http://18.191.45.207:5000/api/models/predict/pole',
                 data: data,
@@ -42,42 +42,49 @@ function MultiView(props) {
                 contentType: false,
                 type: 'POST',
                 success: function(data){
-                    let i =0;
-                    while(i < props.fileJson.length) {
+                    
+                    let j = 0;
+
+                    while(j < props.fileJson.length) {
 
                         let bounds = data["1"][2][0];
-                        let original = JSON.stringify(props.fileJson[i]);
+                        let original = JSON.stringify(props.fileJson[j]);
                         let urlIndex = original.indexOf("image_url") - 1;
                         let endIndex = original.substring(urlIndex).indexOf(".jpg") + 5; //length of string
                         let urlstring = original.substring(urlIndex, (original.indexOf(".jpg")+5));
                         let url = urlstring.substring(14).slice(0, -1);
 
-                        // console.log(bounds);
+                        console.log("iteration: "+i);
+                        console.log("URL "+url);
+                        console.log("FILE NAME "+props.fileJpg[i].name);
 
-                        if(url.indexOf(props.fileJpg[0].name) !==  -1) {
+                        if(url.indexOf(props.fileJpg[i].name) !==  -1) {
+                            
                             // console.log("SAMe");
                             // props.fileJson[i] = props.fileJson[i].concat(bounds);
                             try {
-                                props.fileJson[i] = JSON.parse(props.fileJson[i]);
+                                props.fileJson[j] = JSON.parse(props.fileJson[j]);
                             }catch(err){
                                 console.log(err);
                             }
                             
-                            props.fileJson[i].bounded_box = bounds;
+                            props.fileJson[j].bounded_box = bounds;
                             // console.log(props.fileJson[i])
 
                             let data2 = new FormData();
 
                             data2 = new FormData();
-                                    data2.append("pole", JSON.stringify(props.fileJson[i]["pole"]));
-                                    data2.append("image", JSON.stringify(props.fileJson[i]["image"]));
-                                    data2.append("esri_data", JSON.stringify(props.fileJson[i]["esri_data"]));
-                                    data2.append("bounded_box", JSON.stringify(props.fileJson[i]["bounded_box"]));
+                                    data2.append("pole", JSON.stringify(props.fileJson[j]["pole"]));
+                                    data2.append("image", JSON.stringify(props.fileJson[j]["image"]));
+                                    data2.append("esri_data", JSON.stringify(props.fileJson[j]["esri_data"]));
+                                    data2.append("bounded_box", JSON.stringify(props.fileJson[j]["bounded_box"]));
 
-                                    let lat = props.fileJson[i]["pole"]["coordinates"][1];
-                                    let lng = props.fileJson[i]["pole"]["coordinates"][0];
+                                    let lat = props.fileJson[j]["pole"]["coordinates"][1];
+                                    let lng = props.fileJson[j]["pole"]["coordinates"][0];
                                     
                                     leanAPI(lng, lat);
+
+                                    i++;
 
                                     async function leanAPI(lng, lat){
                                         $.ajax({
@@ -95,29 +102,38 @@ function MultiView(props) {
 
                                                     console.log(marker)
 
-
                                                     try{
-                                                        console.log(markers.indexOf(marker[0]));
-
-                                                        if(longs.indexOf(marker[0]) !== -1 || markers.length === 0){
+                                                        // console.log("OLD LONGS: "+longs)
+                                                        // console.log("CURRENT LNG: "+ marker[0])
+                                                        // console.log(longs.indexOf(marker[0]) === -1|| longs.length === 0)
+                                                        if(longs.indexOf(marker[0]) === -1 || longs.length === 0){
                                                             let temp = [marker]
-                                                            setMarkers(markers.concat(temp));
+
+                                                            console.log("Old Markers: " + markers)
+
+                                                            setMarkers(markers => temp.concat(markers));
+
+                                                            console.log("New Markers: " + markers)
+
                                                             longs.push(marker[0]);
+                                                            console.log("NEW LONGS: "+longs)
                                                         }
                                                 }catch(err){console.log(err)}
-                                                console.log("markers: "+markers)
+                                                // console.log("markers: "+markers)
                                             },
                                             error: function(xhr, status, error) {
                                                 alert("error");
                                             }
+                                            
                                         });
                                     }
 
 
-                                    props.fileJson[i] = JSON.stringify(props.fileJson[i])
+                                    props.fileJson[j] = JSON.stringify(props.fileJson[j])
+                                    break;
                         }
 
-                        i++;
+                        j++;
                     }
 
                     // console.log(data);
@@ -126,11 +142,12 @@ function MultiView(props) {
                     alert("error");
                 }
               });
+              
         })
-
+        first = false;
       }, [markers]);
 
-    let id =1234;
+    // let id =1234;
 
     let center = {
         lat: 39.98938095928276,
@@ -139,7 +156,7 @@ function MultiView(props) {
 
   return (
     <div className="MultiView">
-multi   {markers.length}
+        Markers: {markers.length}
         <div className="map-container" style={{width: "100%", height: "600px", background: "blue"}}>
             
             <GoogleMapReact
@@ -147,28 +164,31 @@ multi   {markers.length}
                 defaultCenter={center}
                 defaultZoom={11}
                 >
-                {/* <AnyReactComponent
-                    lat={center.lat}
-                    lng={center.lng}
-                    text="My Marker"
-                /> */}
-                { markers.length !== 0 && markers.map((marker, i) => {
 
-                        console.log("markeR: " + marker[0])    
+                {/* {console.log("HTML Longs: " + longs)}  */}
+
+                { markers.length !== 0 && markers.map((marker, id) => {
+
+                        let idArr = [id]
+
+                        console.log("inside index: " +id);
+                        console.log("clicked: " +clicked)
+
                         return(
                             <Marker
-                                key={i}
+                                key={id}
                                 lat={marker[1]}
                                 lng={marker[0]}
+                                lean={marker[2]}
                                 show={clicked.indexOf(id) !== -1}
                                 place={marker + "has lean of " + marker[2]}
-                                onClick={() => {clicked.indexOf(id) !== -1 ? setClicked([]) : setClicked(clicked.concat(id))}}
+                                onClick={() => {clicked.indexOf(id) !== -1 ? setClicked(clicked => clicked.splice(clicked.indexOf(id), 1)) : setClicked(clicked => idArr.concat(clicked))}}
                             />)
                     })
                 }
                  
-              {console.log("markers: " + markers)}
-              {console.log(clicked)}
+              {/* {console.log("markers: " + markers)} */}
+              
             </GoogleMapReact>
         </div>
     </div>
