@@ -35,7 +35,7 @@ function Marker(props) {
       <>
         <div style={markerStyle} onClick={() => onClick()}/>
         {/* {console.log(props.show)} */}
-        {props.show && <InfoWindow place={props.place} />}
+        {props.show && <InfoWindow lat={props.lat} lng={props.lng} lean={props.lean} image={props.image}/>}
       </>
     );
   };

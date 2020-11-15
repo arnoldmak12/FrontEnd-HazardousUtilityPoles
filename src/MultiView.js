@@ -81,12 +81,13 @@ function MultiView(props) {
 
                                     let lat = props.fileJson[j]["pole"]["coordinates"][1];
                                     let lng = props.fileJson[j]["pole"]["coordinates"][0];
-                                    
-                                    leanAPI(lng, lat);
+                                    let image = props.fileJson[j]["image"]["image_url"];
+
+                                    leanAPI(lng, lat, image);
 
                                     i++;
 
-                                    async function leanAPI(lng, lat){
+                                    async function leanAPI(lng, lat, image){
                                         $.ajax({
                                             url: 'https://lean-calculator.herokuapp.com/api',
                                             data: data2,
@@ -98,7 +99,8 @@ function MultiView(props) {
                                                 let marker = [ 
                                                     lng, 
                                                     lat, 
-                                                    data]
+                                                    data,
+                                                    image]
 
                                                     console.log(marker)
 
@@ -165,8 +167,6 @@ function MultiView(props) {
                 defaultZoom={11}
                 >
 
-                {/* {console.log("HTML Longs: " + longs)}  */}
-
                 { markers.length !== 0 && markers.map((marker, id) => {
 
                         let idArr = [id]
@@ -180,8 +180,8 @@ function MultiView(props) {
                                 lat={marker[1]}
                                 lng={marker[0]}
                                 lean={marker[2]}
+                                image={marker[3]}
                                 show={clicked.indexOf(id) !== -1}
-                                place={marker + "has lean of " + marker[2]}
                                 onClick={() => {clicked.indexOf(id) !== -1 ? setClicked(clicked => clicked.splice(clicked.indexOf(id), 1)) : setClicked(clicked => idArr.concat(clicked))}}
                             />)
                     })

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 // InfoWindow component
 const InfoWindow = (props) => {
-    const { place } = props;
+    const { lat, lng, lean, image } = props;
     const infoWindowStyle = {
       position: 'relative',
       bottom: 150,
@@ -18,7 +18,13 @@ const InfoWindow = (props) => {
   
     return (
       <div style={infoWindowStyle}>
-        {place}
+        <strong>Latitude: </strong>{lat.toFixed(3)}
+        <br></br>
+        <strong>Longitude: </strong> {lng.toFixed(3)}
+        <br></br>
+        <strong>Lean: </strong> {lean.toFixed(3)}
+        <br></br>
+        <a href={image} > <strong>Link to Photo </strong> </a>
       </div>
     );
   };
