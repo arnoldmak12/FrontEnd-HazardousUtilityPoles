@@ -32,20 +32,25 @@ div.button-container {
   width: 60%;
   height: 10%;
   margin-left: 20%;
-  background: lightcyan;
-  margin-top: 2%;
+  /* background: lightcyan; */
 }
 
 div.button-container button {
-  width: 10%;
+  width: 15%;
   min-width: fit-content;
-  height: 40%;
-  font-size: 1.5em;
-  margin-top: 2%;
+  height: 50%;
+  font-size: 2em;
   background: none;
   border-radius: .25em;
-  border: 1px solid blue;
-  color: blue;
+  border: 3px solid blue;
+  color: white;
+  background: rgba(0, 0, 255, 0.534);
+  text-decoration: none;
+}
+
+div.button-container button:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 255, 0.308);
 }
 
 button.next {

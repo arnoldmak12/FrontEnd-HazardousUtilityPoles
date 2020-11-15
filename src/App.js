@@ -21,9 +21,6 @@ function App() {
       </div>
 
       <div className="content-container">
-
-              {"Count: " + count}
-              <br></br>
               
               {(count === 0 ? <Welcome></Welcome> : null)} 
 
@@ -44,7 +41,7 @@ function App() {
 
       <div className="button-container">
           <button className="previous" onClick={() => setCount(count - 1)} hidden={count === 0 ? true : false}>Previous</button>
-          <button className="next" onClick={() => setCount(count + 1)} hidden={count === MAX ? true : false}>Next</button>
+          <button className="next" onClick={() => setCount(count + 1)} hidden={count === MAX ? true : false}>NEXT</button>
       </div>
 
     </div>

@@ -1,0 +1,35 @@
+div.welcome {
+    width: 100%;
+    height: 100%;
+}
+
+div.content-header-container {
+    width: 80%;
+    height: 25%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: chartreuse; */
+}
+
+div.content-header-container p.content-header{
+    color: black;
+    font-size: 2.5em;
+}
+
+div.content-body-container {
+    width: 85%;
+    height: 55%;
+    margin-left: 7.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: rgb(25, 0, 255); */
+}
+
+div.content-body-container p.content-body{
+    color: black;
+    font-size: 2em;
+    text-align: center;
+}
