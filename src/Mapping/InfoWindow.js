@@ -24,7 +24,7 @@ const InfoWindow = (props) => {
         <br></br>
         <strong>Lean: </strong> {lean.toFixed(3)}
         <br></br>
-        <a href={image} > <strong>Link to Photo </strong> </a>
+        <a href={image} target="_blank"> <strong>Link to Photo </strong> </a>
       </div>
     );
   };
