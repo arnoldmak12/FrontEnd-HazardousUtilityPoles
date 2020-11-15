@@ -11,7 +11,8 @@ function App() {
   
   const [count, setCount] = useState(0);
   const [single, setSingle] = useState(false);
-  const [file, setFile] = useState(false);
+  const [fileJpg, setfileJpg] = useState(false);
+  const [fileJson, setfileJson] = useState(false);
   const [sample, setSample] = useState(false);
   const MAX = 3;
 
@@ -30,13 +31,16 @@ function App() {
               
               {(count === 0 ? <Select onClick={(x) => setSingle(x)}></Select> : null) /* This will allow for selection of 1 or multiple utility poles */} 
 
-              {count === 1 ? <Upload single={single} onSubmit={(files) => setFile(files)} useSample={() => setSample(!sample)}></Upload> : null}
+              {count === 1 ? <Upload single={single} 
+              onSubmitJpg={(fileJpgs) => setfileJpg(fileJpgs)}  
+              onSubmitJson={(fileJson) => setfileJson(fileJson)}
+              useSample={() => setSample(!sample)}></Upload> : null}
 
               <br></br>
 
               {count === 2 ? <Video></Video> : null}
 
-              {(count === 3 && !single) ? <MultiView></MultiView> : null}
+              {(count === 3 && !single) ? <MultiView fileJpg={fileJpg} fileJson={fileJson}></MultiView> : null}
 
               {/* {count === 2 ? console.log("sample is "+ sample) + " Sample: " + {sample} : null} */}
       </div>

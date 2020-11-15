@@ -8,7 +8,35 @@ function Upload(props) {
 
     const onDrop = useCallback(acceptedFiles => {
         console.log(acceptedFiles);
-        props.onSubmit(acceptedFiles);
+
+        if(acceptedFiles[0].type === "application/json"){
+            let fileJson = [];
+            // props.onSubmitJson(acceptedFiles);
+            // console.log(acceptedFiles);
+
+            acceptedFiles.forEach((file) => {
+                const reader = new FileReader()
+                
+                reader.onabort = () => console.log('file reading was aborted')
+                reader.onerror = () => console.log('file reading has failed')
+                
+                reader.onload = () => {
+                // Do whatever you want with the file contents
+                  const binaryStr = reader.result
+                  fileJson.push(binaryStr); 
+                };
+                // reader.readAsArrayBuffer(file);
+                reader.readAsText(file);
+              })
+
+              console.log(fileJson);
+              props.onSubmitJson(fileJson);
+        }
+        else{
+            props.onSubmitJpg(acceptedFiles);
+        }
+        
+
         }, [])
         const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
@@ -24,8 +52,17 @@ function Upload(props) {
             <input {...getInputProps()} />
             {
                 isDragActive ?
-                <p>Drop the files here ...</p> :
-                <p>Upload {props.single ? "One File": "Multiple Files"}</p>
+                <p>Drop the JPEG files here ...</p> :
+                <p>Upload {props.single ? "One JPEG File": "Multiple JPEG Files"}</p>
+            }
+        </div>
+
+        <div {...getRootProps()} style={{background: 'lightyellow'}}>
+            <input {...getInputProps()} />
+            {
+                isDragActive ?
+                <p>Drop the JSON files here ...</p> :
+                <p>Upload {props.single ? "One JSON File": "Multiple JSON Files"}</p>
             }
         </div>
 
