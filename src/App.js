@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       
       <div className="main-header-container">
-          <p className="main-header">Title</p>
+          <p className="main-header">Utility Pole Safety Evaluator</p>
       </div>
 
       <div className="content-container">

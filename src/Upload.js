@@ -45,6 +45,8 @@ function Upload(props) {
         props.onSubmitJson(json_files);
         props.onSubmitJpg(jpg_files);
 
+        alert("Successfully Uploaded " + (json_files.length + jpg_files.length) + " Files")
+
         }, [])
         const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 

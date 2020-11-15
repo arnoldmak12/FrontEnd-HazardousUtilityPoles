@@ -8,15 +8,16 @@ div.App {
 div.main-header-container {
   width: 10%;
   min-width: fit-content;
-  margin-left: 45%;
+  margin-left: 30%;
   margin-top: 2%;
   background:gray;
 }
 
 p.main-header{
   text-align: center;
-  font-size: 2em;
+  font-size: 4em;
   margin: 0;
+  text-decoration: underline;
 }
 
 div.content-container {

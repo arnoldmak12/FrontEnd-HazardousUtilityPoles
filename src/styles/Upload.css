@@ -30,3 +30,7 @@ div.sample-container {
 div.sample-container a{
     font-size: 2em;
 }
+
+div.sample-container a:visited{
+    color: #0000EE;
+}
