@@ -3,8 +3,8 @@ import GoogleMapReact from 'google-map-react';
 import Marker from './Mapping/Marker';
 import FormData from 'form-data'
 import $ from 'jquery'
-// var fs = require('fs');
-// import './MultiView.css';
+import GridLoader from "react-spinners/GridLoader";
+import './styles/MultiView.css';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -158,10 +158,20 @@ function MultiView(props) {
 
   return (
     <div className="MultiView">
-        Markers: {markers.length}
-        <div className="map-container" style={{width: "100%", height: "600px", background: "blue"}}>
+
+        <div className="map-container" style={{width: "100%", height: "600px"}}>
             
-            <GoogleMapReact
+            {first ? 
+            (
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '15%'}}>
+                <GridLoader
+                    size={80}
+                    color={'lightgrey'}
+                    // loading={this.state.loading}
+                />
+                </div>
+            ) :
+            (<GoogleMapReact
                 bootstrapURLKeys={{ key: "AIzaSyBB9ls28E032E2Y_SM0w990xtohd_crKHk" }}
                 defaultCenter={center}
                 defaultZoom={11}
@@ -189,7 +199,7 @@ function MultiView(props) {
                  
               {/* {console.log("markers: " + markers)} */}
               
-            </GoogleMapReact>
+            </GoogleMapReact>)}
         </div>
     </div>
   );
