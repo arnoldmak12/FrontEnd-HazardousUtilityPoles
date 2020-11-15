@@ -4,7 +4,6 @@ import Marker from './Mapping/Marker';
 import FormData from 'form-data'
 import $ from 'jquery'
 import GridLoader from "react-spinners/GridLoader";
-import './styles/MultiView.css';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -165,8 +164,8 @@ function MultiView(props) {
             (
                 <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '15%'}}>
                 <GridLoader
-                    size={80}
-                    color={'lightgrey'}
+                    size={50}
+                    color={'orange'}
                     // loading={this.state.loading}
                 />
                 </div>

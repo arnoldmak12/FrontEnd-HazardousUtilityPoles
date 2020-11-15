@@ -19,6 +19,7 @@ p.main-header{
   margin: 0;
   text-decoration: underline;
   font-weight: bold;
+  color: rgb(78, 52, 19);
 }
 
 div.content-container {
@@ -31,7 +32,7 @@ div.content-container {
 
 div.button-container {
   width: 60%;
-  height: 10%;
+  height: 12%;
   margin-left: 20%;
   /* background: lightcyan; */
 }

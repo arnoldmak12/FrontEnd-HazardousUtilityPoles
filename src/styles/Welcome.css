@@ -16,6 +16,7 @@ div.content-header-container {
 div.content-header-container p.content-header{
     color: black;
     font-size: 2.5em;
+    color: rgb(78, 52, 19)
 }
 
 div.content-body-container {
@@ -25,11 +26,12 @@ div.content-body-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: rgb(25, 0, 255); */
+    
 }
 
 div.content-body-container p.content-body{
     color: black;
     font-size: 2em;
     text-align: center;
+    color: rgb(78, 52, 19)
 }
