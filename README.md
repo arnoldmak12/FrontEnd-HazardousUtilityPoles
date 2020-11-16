@@ -3,7 +3,7 @@ A website that lets you upload images + metadata of utility poles and approximat
 * Live site: https://utilitypolesafetyevaluator.herokuapp.com/
 
 ## Demo
-![](public\Demo.mp4)
+[![](https://res.cloudinary.com/marcomontalbano/image/upload/v1605556477/video_to_markdown/images/youtube--sC3HWSmh7bc-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/sC3HWSmh7bc "")
 
 ## Additional Resources
 * Repo for the back-end API: https://github.com/Rocksrock18/Lean-Calculator
