@@ -57,12 +57,12 @@ function Upload(props) {
                     {
                         isDragActive ?
                         <p>Drop the files here ...</p> :
-                        <p>Upload All JPGs and Corressponding JSON Here</p>
+                        <p>Upload All JPGs and Corresponding JSON Here</p>
                     }
             </div>
 
             <div className="sample-container">
-                <a href="https://github.com/arnoldmak12/FrontEnd-HazardousUtilityPoles/tree/master/public" target="_blank">Sample Data Availible Here</a>
+                <a href="https://github.com/arnoldmak12/FrontEnd-HazardousUtilityPoles/tree/master/public" target="_blank">Sample Data Available Here</a>
             </div>
     
         </div>
