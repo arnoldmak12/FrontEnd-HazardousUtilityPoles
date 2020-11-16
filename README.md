@@ -4,6 +4,7 @@ A website that lets you upload images + metadata of utility poles and approximat
 
 ## Additional Resources
 * Repo for the back-end API: https://github.com/Rocksrock18/Lean-Calculator
+* Repo for the Drone AI: https://github.com/WildJae/Drone_autopilot
 
 ## Uploading Data
 Upload the image of the pole and the corresponding metadata into the dropbox.
