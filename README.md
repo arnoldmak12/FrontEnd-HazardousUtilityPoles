@@ -2,6 +2,9 @@
 A website that lets you upload images + metadata of utility poles and approximate how much each one is leaning in real time.
 * Live site: https://utilitypolesafetyevaluator.herokuapp.com/
 
+## Demo
+![](public\Demo.mp4)
+
 ## Additional Resources
 * Repo for the back-end API: https://github.com/Rocksrock18/Lean-Calculator
 * Repo for the Drone AI: https://github.com/WildJae/Drone_autopilot
