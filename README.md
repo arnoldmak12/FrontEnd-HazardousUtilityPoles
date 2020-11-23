@@ -1,5 +1,7 @@
 # Hazardous Utility Poles
-A website that lets you upload images + metadata of utility poles and approximate how much each one is leaning in real time.
+People rely on utility poles every day for power and electricity. Maintaining the quality of these utility poles is a task of utmost importance, yet unfortunately can be arduous and tedious to perform consistently. New technology means we can send out drones to check up on these, so what if we could use an AI to autopilot these drones and visit the poles? Better yet, what if we could use data to accurately pinpoint which poles need maintenance, all without having to do the work ourselves? That's the goal we aimed to achieve with the Utility Pole Safety Evaluator. Our project runs a drone autopilot AI in a simulated environment and takes a combination of images and drone data to evaluate the safety of a given pole. All of this data is processed and displayed in real-time, using Google Maps to see where maintenance is needed.
+
+tl;dr: A website that lets you upload images + metadata of utility poles and approximate how much each one is leaning in real time.
 * Live site: https://utilitypolesafetyevaluator.herokuapp.com/
 
 ## Demo
